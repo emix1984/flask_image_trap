@@ -1,29 +1,23 @@
 # models.py
-from . import db
+from app import db
 from datetime import datetime
 
 
-class MailLogStepA(db.Model):
-    __tablename__ = 'EmailLog_StepA'
+class table_ImageTrap_mail(db.Model):
+    __tablename__ = 'ImageTrap_mail'
 
     id = db.Column(db.Integer, primary_key=True)
-    sender = db.Column(db.String(120), nullable=False)
-    recipient = db.Column(db.String(120), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f'<MailLog {self.sender} at {self.timestamp}>'
-
-class Subscription(db.Model):
-    __tablename__ = 'subscriptions'
-
-    id = db.Column(db.Integer, primary_key=True)
-    company_name = db.Column(db.String(100), nullable=False)
-    position = db.Column(db.String(100), nullable=False)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    phone_number = db.Column(db.String(20), nullable=False)
-    export_country = db.Column(db.String(100), nullable=False)
+    ip_address = db.Column(db.String(100), nullable=False)
+    geo_country = db.Column(db.String(100), nullable=False)
+    geo_region = db.Column(db.String(100), nullable=False)
+    geo_city = db.Column(db.String(100), nullable=False)
+    geo_latitude = db.Column(db.String(100), nullable=False)
+    geo_longitude = db.Column(db.String(100), nullable=False)
+    ua_device = db.Column(db.String(100), nullable=False)
+    ua_os = db.Column(db.String(100), nullable=False)
+    ua_browser = db.Column(db.String(100), nullable=False)
+    ua_browser_version = db.Column(db.String(100), nullable=False)
+    referrer = db.Column(db.String(100), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
