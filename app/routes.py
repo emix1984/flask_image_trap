@@ -9,10 +9,12 @@ BASE_IMAGE_FOLDER = 'static/images'
 
 def register_routes(app):
     @app.route('/mail/ts_liuying.jpg')
-    def track_visitor_mail_ts():
+    @app.route('/e2gqUjviWsN/ts_liuying.jpg')
+    def track_visitor_mail_ts(filename='ts_liuying.jpg'):
         # 使用相对于应用根目录的路径
-        folder_path = os.path.join(app.root_path, '..', 'static', 'images', 'mail')
-        filename = 'ts_liuying.jpg'
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        folder_path = os.path.join(project_root, 'static', 'images', 'mail')
+        # filename = 'ts_liuying.jpg'
         full_path = os.path.join(folder_path, filename)
         
         # 检查文件是否存在
