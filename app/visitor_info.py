@@ -11,6 +11,8 @@ def log_visitor_info():  # Remove request parameter
     geo_info = get_geo_info(visitor_ip)
     user_agent_string = request.headers.get('User-Agent', '')  # Access request here
     ua_info = parse_user_agent(user_agent_string)
+    # print(f"User-Agent: {user_agent_string}")
+    # print(f"User-Agent 解析结果: {ua_info}")
     referrer = request.referrer or '无来源信息'  # Access request here
 
     # 扁平化字典
@@ -25,15 +27,12 @@ def log_visitor_info():  # Remove request parameter
         "geo_longitude": geo_info.get("longitude"),
         # ua_info 扁平化
         "ua_browser": ua_info.get("browser"),
-        "ua_browser_version": ua_info.get("browser_version"),
         "ua_os": ua_info.get("os"),
-        "ua_os_version": ua_info.get("os_version"),
         "ua_device": ua_info.get("device"),
     }
 
-    print(f"🌐 IP 地址: {visitor_ip}")
-    print(f"📍 地理位置: {geo_info}")
-    print(f"🧭 User-Agent: {ua_info}")
-    print(f"🔗 来源页面: {referrer}")
-
+    # print(f"🌐 IP 地址: {visitor_ip}")
+    # print(f"📍 地理位置: {geo_info}")
+    # print(f"🧭 User-Agent: {ua_info}")
+    # print(f"🔗 来源页面: {referrer}")
     return visitor_data

@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request
-from app.routes import register_routes  # Import the register_routes function
+from app import create_app, db
+from app.routes import register_routes
 
-
-app = Flask(__name__)
-register_routes(app) # Register the routes with the app
+app = create_app()
+register_routes(app)
 
 if __name__ == '__main__':
     print("开始启动flask")
