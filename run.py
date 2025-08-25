@@ -5,6 +5,10 @@ app = create_app()
 register_routes(app)
 
 if __name__ == '__main__':
+    # 在 Docker 环境中，我们需要监听所有接口
+    import os
+    port = int(os.environ.get('PORT', 5001))
+    print("端口号：", port)
     print("开始启动flask")
-    app.run(host='0.0.0.0', port=5001, debug=True) # 开启Flask调试模式
-    # app.run(host='0.0.0.0', port=5002, debug=False) # 关闭Flask调试模式
+    # app.run(host='0.0.0.0', port=5001, debug=True) # 开启Flask调试模式
+    app.run(host='0.0.0.0', port=5002, debug=False) # 关闭Flask调试模式

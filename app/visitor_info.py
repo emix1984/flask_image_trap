@@ -8,6 +8,13 @@ from .utils.ua_utils import parse_user_agent
 
 def log_visitor_info():  # Remove request parameter
     visitor_ip = get_real_ip()
+    
+    # 添加调试信息
+    print(f"X-Forwarded-For: {request.headers.get('X-Forwarded-For', 'None')}")
+    print(f"X-Real-IP: {request.headers.get('X-Real-IP', 'None')}")
+    print(f"Remote Address: {request.remote_addr}")
+    print(f"最终获取的访客IP: {visitor_ip}")
+
     geo_info = get_geo_info(visitor_ip)
     user_agent_string = request.headers.get('User-Agent', '')  # Access request here
     ua_info = parse_user_agent(user_agent_string)

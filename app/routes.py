@@ -8,7 +8,7 @@ from . import db  # 导入数据库实例
 BASE_IMAGE_FOLDER = 'static/images'
 
 def register_routes(app):
-    @app.route('/mail/ts_liuying.jpg')
+    # @app.route('/mail/ts_liuying.jpg') # 测试专用简化路径
     @app.route('/e2gqUjviWsN/ts_liuying.jpg')
     def track_visitor_mail_ts(filename='ts_liuying.jpg'):
         # 使用相对于应用根目录的路径
