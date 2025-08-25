@@ -1,6 +1,7 @@
 # models.py
 from app import db
 from datetime import datetime
+import pytz
 
 
 class table_mail_ts(db.Model):
@@ -17,7 +18,9 @@ class table_mail_ts(db.Model):
     ua_os = db.Column(db.String(100), nullable=True)
     ua_browser = db.Column(db.String(100), nullable=True)
     referrer = db.Column(db.String(100), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now)
+    
+    # 明确指定时间戳字段，不允许为空
+    timestamp = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
-        return f'<Subscription {self.email} at {self.timestamp}>'
+        return f'<table_mail_ts {self.ip_address} at {self.timestamp}>'

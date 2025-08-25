@@ -10,14 +10,22 @@ def get_geo_info(ip):
         city = response.city.names.get("zh-CN", response.city.name)
         region = response.subdivisions[0].names.get("zh-CN", "") if response.subdivisions else ""
 
+        # 添加经纬度信息
+        latitude = response.location.latitude
+        longitude = response.location.longitude
+
         return {
             "country": country or "未知",
             "city": city or "未知",
             "region": region or "未知",
+            "latitude": latitude,
+            "longitude": longitude
         }
     except Exception:
         return {
             "country": "未知",
             "city": "未知",
             "region": "未知",
+            "latitude": None,
+            "longitude": None
         }

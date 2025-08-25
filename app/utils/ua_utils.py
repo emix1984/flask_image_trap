@@ -10,7 +10,7 @@ def parse_user_agent(ua_string):
         "Other"
     )
     return {
-        "device_type": device_type,
+        "device": device_type,
         "os": ua.os.family + " " + ua.os.version_string,
         "browser": ua.browser.family + " " + ua.browser.version_string,
         "raw": ua_string

@@ -9,6 +9,11 @@ __pycache__
 *.pyo
 *.pyd
 .Python
+# 忽略数据
+data/
+# 忽略logs
+logs/
+# 忽略虚拟环境
 env/
 venv/
 .venv/

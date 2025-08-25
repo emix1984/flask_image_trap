@@ -4,6 +4,8 @@ from .visitor_info import log_visitor_info
 from .utils.gotify_pusher import push_to_gotify
 from .models import table_mail_ts  # 导入模型
 from . import db  # 导入数据库实例
+from datetime import datetime
+import pytz
 
 BASE_IMAGE_FOLDER = 'static/images'
 
@@ -27,9 +29,15 @@ def register_routes(app):
         # 获取访客信息（扁平结构）
         visitor_data = log_visitor_info()
         # print(f"Visitor data logged: {visitor_data}")
+        # 添加首尔时区的时间戳
+        seoul_tz = pytz.timezone('Asia/Seoul')
+        visitor_data['timestamp'] = datetime.now(seoul_tz)
+        print(f"时间戳: {visitor_data['timestamp']}")
         
         # 存储到数据库
         data = table_mail_ts(**visitor_data)  # 使用扁平字典结构创建 Subscription 实例
+        # 当我们打印这个对象时：
+        print(f"数据存储：{data}")
         db.session.add(data)
         db.session.commit()
         
